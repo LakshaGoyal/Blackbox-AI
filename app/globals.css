@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 220 26% 5%;
+  --foreground: 210 40% 98%;
+  --card: 222 24% 8%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 24% 8%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 173 76% 48%;
+  --primary-foreground: 224 24% 6%;
+  --secondary: 225 18% 14%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 224 18% 16%;
+  --muted-foreground: 218 15% 67%;
+  --accent: 43 96% 56%;
+  --accent-foreground: 224 24% 6%;
+  --destructive: 0 78% 58%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 220 16% 20%;
+  --input: 220 16% 20%;
+  --ring: 173 76% 48%;
+  --radius: 8px;
+}
+
+* {
+  @apply border-border;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  background:
+    radial-gradient(circle at 22% -10%, rgba(20, 184, 166, 0.2), transparent 32rem),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(7, 10, 18, 1) 45%, rgba(18, 18, 28, 1));
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(20, 184, 166, 0.35);
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.045));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(22px);
+}
+
+.noise {
+  position: relative;
+}
+
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+@media print {
+  body {
+    background: #ffffff;
+    color: #111827;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
